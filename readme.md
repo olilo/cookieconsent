@@ -7,14 +7,14 @@ changes:
 - adds a table with cookie specific information for each cookie category
 - removes cookies after revoked consent
 
-##why
+## why
 Cookieconsent adds a cookie consent message as required by european data privacy law. It takes into account:
 - EU regulation General Data Protection Regulation (EU) 2016/679 ([**GDPR**](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&from=EN)) 
 - judgment ([**preliminary ruling for C-673/17**](http://curia.europa.eu/juris/document/document.jsf;jsessionid=D5DC4CA415C605B28E70747FD3C5158C?text=&docid=218462&pageIndex=0&doclang=EN&mode=req&dir=&occ=first&part=1&cid=1458627)) 
 of the European Court of Justice (ECJ)
 - the current [draft of the future ePrivacy Regulation (**ePR**)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52017PC0010) - Proposal for a REGULATION OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL concerning the respect for private life and the protection of personal data in electronic communications and repealing Directive 2002/58/EC (Regulation on Privacy and Electronic Communications). 
 
-##what
+## what
 - displays a basic consent message (consent bar) till user consents to a certain amount of cookies and 
 offers additional information and selectable option in an modal (consent modal)
 - user can consent to all cookies or only certain categories of them (Opt-In), 
