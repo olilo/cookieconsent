@@ -7,24 +7,23 @@ import Configuration from './Configuration';
 
 export default class CookieConsent {
 
-  init(configObject) {
-    new Configuration(configObject);
+    init(configObject) {
+        new Configuration(configObject);
 
-    const insertScriptFilter = new InsertScriptFilter();
-    const scriptTagFilter = new ScriptTagFilter();
-    const wrapperFilter = new WrapperFilter();
-    const localCookieFilter = new LocalCookieFilter();
+        const insertScriptFilter = new InsertScriptFilter();
+        const scriptTagFilter = new ScriptTagFilter();
+        const wrapperFilter = new WrapperFilter();
+        const localCookieFilter = new LocalCookieFilter();
 
-    insertScriptFilter.init();
-    scriptTagFilter.init();
-    wrapperFilter.init();
-    localCookieFilter.init();
+        insertScriptFilter.init();
+        scriptTagFilter.init();
+        wrapperFilter.init();
+        localCookieFilter.init();
 
-    const UI = new Interface();
+        const UI = new Interface();
 
-    UI.buildInterface(() => {
-      UI.addEventListeners();
-    });
-  }
-
+        UI.buildInterface(() => {
+            UI.addEventListeners();
+        });
+    }
 }

@@ -2,128 +2,127 @@ import Utilities from "./Utilities";
 import loMerge from 'lodash/merge';
 
 export default class Configuration {
-  
-  constructor(configObject) {
 
-    window.CookieConsent.buffer = {
-      appendChild: [],
-      insertBefore: []
-    };
+    constructor(configObject) {
 
-    // Wrapper filter function
-    window.CookieConsent.wrapper = function() {};
+        window.CookieConsent.buffer = {
+            appendChild: [],
+            insertBefore: []
+        };
 
-    // Settings injector for users
-    window.CookieConsent.setConfiguration = this.setConfiguration.bind(this);
+        // Wrapper filter function
+        window.CookieConsent.wrapper = function () {
+        };
 
-    window.CookieConsent.config = {
-      active: true,
-      cookieExists: false,
-      cookieVersion: 1,
-      modalMainTextMoreLink: null,
-      barTimeout: 1000,
-      language: {
-        current: 'en',
-        locale: {
-          en: {
-            barMainText: 'This website uses cookies to ensure you get the best experience on our website.',
-            barLinkSetting: 'Cookie Settings',
-            barBtnAcceptAll: 'Accept all cookies',
-            modalMainTitle: 'Cookie settings',
-            modalMainText: 'Cookies are small piece of data sent from a website and stored on the user\'s computer by the user\'s web browser while the user is browsing. Your browser stores each message in a small file, called cookie. When you request another page from the server, your browser sends the cookie back to the server. Cookies were designed to be a reliable mechanism for websites to remember information or to record the user\'s browsing activity.',
-            modalBtnSave: 'Save current settings',
-            modalBtnAcceptAll: 'Accept all cookies and close',
-            modalAffectedSolutions: 'Affected solutions:',
-            learnMore: 'Learn More',
-            on: 'On',
-            off: 'Off',
-          },
-          de: {
-            barMainText: 'Diese Webseite verwendet Cookies, um sie benutzerfreundlicher zu machen, um die Nutzung unserer Webseite zu analysieren und statistisch auszuwerten sowie um Ihre Datenschutzeinstellungen zu speichern. Mit der Auswahl "Akzeptieren" erklÃ¤ren Sie sich damit einverstanden, dass wir Cookies und verwandte Technologien - wie in unserer DatenschutzerklÃ¤rung und den Cookiehinweisen beschrieben - verwenden dÃ¼rfen. FÃ¼r eine detaillierte Auswahl sowie ausfÃ¼hrliche Beschreibung aller Cookies wÃ¤hlen Sie bitte "Cookie Einstellungen verwalten"',
-            barLinkSetting: 'Cookie Einstellungen verwalten',
-            barBtnAcceptAll: 'Alle Cookies akzeptieren',
-            modalMainTitle: 'Einstellungen verwalten',
-            modalMainText: 'Cookies sind kleine browserspezifische Textdateien, die auf dem Rechner des Nutzers gespeichert werden. Sie ermÃ¶glichen es die es unserem Webserver, einen Anwender wiederzuerkennen und Einstellungen zu speichern. Cookies identifizieren keine Personen, sondern nur den Browser.',
-            modalBtnSave: 'Einstellungen speichern',
-            modalBtnAcceptAll: 'Alle Cookies akzeptieren',
-            modalAffectedSolutions: 'gesetzte Cookies:',
-            learnMore: 'Mehr Informationen',
-            on: 'ein',
-            off: 'aus',
+        // Settings injector for users
+        window.CookieConsent.setConfiguration = this.setConfiguration.bind(this);
 
-          }
-        }
-      },
-      categories: {},
-      services: {}
-    };
+        window.CookieConsent.config = {
+            active: true,
+            cookieExists: false,
+            cookieVersion: 1,
+            modalMainTextMoreLink: null,
+            barTimeout: 1000,
+            language: {
+                current: 'en',
+                locale: {
+                    en: {
+                        barMainText: 'This website uses cookies to ensure you get the best experience on our website.',
+                        barLinkSetting: 'Cookie Settings',
+                        barBtnAcceptAll: 'Accept all cookies',
+                        modalMainTitle: 'Cookie settings',
+                        modalMainText: 'Cookies are small piece of data sent from a website and stored on the user\'s computer by the user\'s web browser while the user is browsing. Your browser stores each message in a small file, called cookie. When you request another page from the server, your browser sends the cookie back to the server. Cookies were designed to be a reliable mechanism for websites to remember information or to record the user\'s browsing activity.',
+                        modalBtnSave: 'Save current settings',
+                        modalBtnAcceptAll: 'Accept all cookies and close',
+                        modalAffectedSolutions: 'Affected solutions:',
+                        learnMore: 'Learn More',
+                        on: 'On',
+                        off: 'Off',
+                    },
+                    de: {
+                        barMainText: 'Diese Webseite verwendet Cookies, um sie benutzerfreundlicher zu machen, um die Nutzung unserer Webseite zu analysieren und statistisch auszuwerten sowie um Ihre Datenschutzeinstellungen zu speichern. Mit der Auswahl "Akzeptieren" erklÃ¤ren Sie sich damit einverstanden, dass wir Cookies und verwandte Technologien - wie in unserer DatenschutzerklÃ¤rung und den Cookiehinweisen beschrieben - verwenden dÃ¼rfen. FÃ¼r eine detaillierte Auswahl sowie ausfÃ¼hrliche Beschreibung aller Cookies wÃ¤hlen Sie bitte "Cookie Einstellungen verwalten"',
+                        barLinkSetting: 'Cookie Einstellungen verwalten',
+                        barBtnAcceptAll: 'Alle Cookies akzeptieren',
+                        modalMainTitle: 'Einstellungen verwalten',
+                        modalMainText: 'Cookies sind kleine browserspezifische Textdateien, die auf dem Rechner des Nutzers gespeichert werden. Sie ermÃ¶glichen es die es unserem Webserver, einen Anwender wiederzuerkennen und Einstellungen zu speichern. Cookies identifizieren keine Personen, sondern nur den Browser.',
+                        modalBtnSave: 'Einstellungen speichern',
+                        modalBtnAcceptAll: 'Alle Cookies akzeptieren',
+                        modalAffectedSolutions: 'gesetzte Cookies:',
+                        learnMore: 'Mehr Informationen',
+                        on: 'ein',
+                        off: 'aus',
 
-    this.setConfiguration(configObject);
+                    }
+                }
+            },
+            categories: {},
+            services: {}
+        };
 
-  }
-
-  setConfiguration(configObject) {
-    // The user overrides the default config
-    loMerge(window.CookieConsent.config, configObject);
-
-    // The cookie overrides the default and user config
-    this.cookieToConfig();
-
-    // We tell the world we did this
-    Utilities.dispatchEvent(document, 'CCConfigSet');
-  }
-
-  cookieToConfig() {
-
-    function removeReload() {
-      Utilities.removeCookie();
-      location.reload();
-      return false;
+        this.setConfiguration(configObject);
     }
 
-    document.cookie.split(';').filter((item) => {
+    setConfiguration(configObject) {
+        // The user overrides the default config
+        loMerge(window.CookieConsent.config, configObject);
 
-      if (item.indexOf('cconsent')  >= 0) {
-        var cookieData = JSON.parse(item.split('=')[1]);
+        // The cookie overrides the default and user config
+        this.cookieToConfig();
 
-        // We check cookie version. If older we need to renew cookie.
-        if (typeof cookieData.version === 'undefined') {
-          return removeReload();
-        } else {
-          if (cookieData.version !== window.CookieConsent.config.cookieVersion) {
-            return removeReload();
-          }
+        // We tell the world we did this
+        Utilities.dispatchEvent(document, 'CCConfigSet');
+    }
+
+    cookieToConfig() {
+
+        function removeReload() {
+            Utilities.removeCookie();
+            location.reload();
+            return false;
         }
 
-        // We check if cookie data categories also exist in user config
-        for (let key in cookieData.categories) {
+        document.cookie.split(';').filter((item) => {
 
-          // The cookie contains category not present in user config so we invalidate cookie
-          if(typeof window.CookieConsent.config.categories[key] === 'undefined') {
-            return removeReload();
-          }
-        }
+            if (item.indexOf('cconsent') >= 0) {
+                var cookieData = JSON.parse(item.split('=')[1]);
 
-        // We check if cookie data services also exist in user config
-        cookieData.services.forEach(function(service){
+                // We check cookie version. If older we need to renew cookie.
+                if (typeof cookieData.version === 'undefined') {
+                    return removeReload();
+                } else {
+                    if (cookieData.version !== window.CookieConsent.config.cookieVersion) {
+                        return removeReload();
+                    }
+                }
 
-          // The cookie contains service not present in user config so we invalidate cookie
-          if(typeof window.CookieConsent.config.services[service] === 'undefined') {
-            return removeReload();
-          } 
+                // We check if cookie data categories also exist in user config
+                for (let key in cookieData.categories) {
+
+                    // The cookie contains category not present in user config so we invalidate cookie
+                    if (typeof window.CookieConsent.config.categories[key] === 'undefined') {
+                        return removeReload();
+                    }
+                }
+
+                // We check if cookie data services also exist in user config
+                cookieData.services.forEach(function (service) {
+
+                    // The cookie contains service not present in user config so we invalidate cookie
+                    if (typeof window.CookieConsent.config.services[service] === 'undefined') {
+                        return removeReload();
+                    }
+                });
+
+                // We we integrate cookie data into the global config object
+                for (let key in cookieData.categories) {
+                    window.CookieConsent.config.categories[key].checked = window.CookieConsent.config.categories[key].wanted = (cookieData.categories[key].wanted === true);
+                }
+
+                window.CookieConsent.config.cookieExists = true;
+                return true;
+            }
         });
 
-        // We we integrate cookie data into the global config object
-        for (let key in cookieData.categories) {
-          window.CookieConsent.config.categories[key].checked = window.CookieConsent.config.categories[key].wanted = (cookieData.categories[key].wanted === true);
-        }
-
-        window.CookieConsent.config.cookieExists = true;
-        return true;
-      }
-    });
-    
-    return false;
-  }
-
+        return false;
+    }
 }
