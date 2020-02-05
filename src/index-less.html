@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cookie consent</title>
+
+    <script src="./cookieconsent.js"></script>
+    <link rel="stylesheet" href="./cookieconsent.less"/>
+
+    <script>
+        window.CookieConsent.init({
+            modalMainTextMoreLink: null,
+            barTimeout: 1000,
+            language: {
+                current: (function () {
+                    return document.documentElement.getAttribute('lang') || 'de';
+                })(),
+                locale: {
+                    en: {
+                        barMainText: 'This website uses cookies to make it more user-friendly, to analyse and statistically evaluate the use of our website and to save your data protection settings. By selecting "Accept", you agree that we may use cookies and related technologies as described in our Privacy Policy and Cookie Notices. For a detailed selection and description of all cookies, please select "Manage Cookie Settings".',
+                        barLinkSetting: 'Manage Cookie Settings',
+                        barBtnAcceptAll: 'Accept all cookies',
+                        modalMainTitle: 'Manage Cookie Settings',
+                        modalMainText: 'Cookies are small piece of data sent from a website and stored on the user\'s computer by the user\'s web browser while the user is browsing. Your browser stores each message in a small file, called cookie. When you request another page from the server, your browser sends the cookie back to the server. Cookies were designed to be a reliable mechanism for websites to remember information or to record the user\'s browsing activity.',
+                        modalBtnSave: 'Save current settings',
+                        modalBtnAcceptAll: 'Accept all cookies',
+                        modalAffectedSolutions: 'Affected solutions:',
+                        learnMore: 'Learn More',
+                        on: 'On',
+                        off: 'Off',
+                    },
+                    de: {
+                        barMainText: 'Diese Webseite verwendet Cookies, um sie benutzerfreundlicher zu machen, um die Nutzung unserer Webseite zu analysieren und statistisch auszuwerten sowie um Ihre Datenschutzeinstellungen zu speichern. Mit der Auswahl "Akzeptieren" erklären Sie sich damit einverstanden, dass wir Cookies und verwandte Technologien - wie in unserer Datenschutzerklärung und den Cookiehinweisen beschrieben - verwenden dürfen. Für eine detaillierte Auswahl sowie ausführliche Beschreibung aller Cookies wählen Sie bitte "Cookie Einstellungen verwalten"',
+                        barLinkSetting: 'Cookie Einstellungen verwalten',
+                        barBtnAcceptAll: 'Alle Cookies akzeptieren',
+                        modalMainTitle: 'Einstellungen verwalten',
+                        modalMainText: 'Cookies sind kleine browserspezifische Textdateien, die auf dem Rechner des Nutzers gespeichert werden. Sie ermöglichen es die es unserem Webserver, einen Anwender wiederzuerkennen und Einstellungen zu speichern. Cookies identifizieren keine Personen, sondern nur den Browser.',
+                        modalBtnSave: 'Einstellungen speichern',
+                        modalBtnAcceptAll: 'Alle Cookies akzeptieren',
+                        modalAffectedSolutions: 'gesetzte Cookies:',
+                        learnMore: 'Mehr Informationen',
+                        on: 'ein',
+                        off: 'aus',
+                    }
+                }
+            },
+            categories: {
+                necessary: {
+                    needed: true,
+                    wanted: true,
+                    checked: true,
+                    language: {
+                        locale: {
+                            en: {
+                                name: 'Strictly Necessary Cookies',
+                                description: 'Necessary cookies help to make a website usable by enabling basic functions such as page navigation and access to secure areas of the website. The website cannot function properly without these cookies.'
+
+                            },
+                            de: {
+                                name: 'technisch notwendige Cookies',
+                                description: 'Notwendige Cookies helfen dabei, eine Webseite nutzbar zu machen, indem sie Grundfunktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Webseite ermÃ¶glichen. Die Webseite kann ohne diese Cookies nicht richtig funktionieren.'
+                            }
+                        }
+                    }
+                },
+                various: {
+                    needed: false,
+                    wanted: false,
+                    checked: false,
+                    cookies: ['local-cookie', 'wrapped-cookie'],
+                    language: {
+                        locale: {
+                            de: {
+                                name: 'Cookie Kategorie Verschiedenes',
+                                description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. A',
+                            },
+                            en: {
+                                name: 'Cookie Category Various',
+                                description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. A',
+                            }
+                        }
+                    }
+                }
+            },
+            services: {
+                necessary: {
+                    category: 'necessary',
+                    type: 'localcookie',
+                    language: {
+                        locale: {
+                            de: {
+                                name: 'CMS und Datenschutzeinstellungen',
+                                infos: [
+                                    {
+                                        cname: 'cconsent',
+                                        ctype: 'HTTP - persistenter Cookie',
+                                        cdomain: '.cosmocode.de',
+                                        cduration: '2 Jahre',
+                                        cdesc: 'Speicherung der Cookie Einstellungen'
+                                    },
+                                    {
+                                        cname: 'csrftoken',
+                                        ctype: 'HTTP - persistenter Cookie',
+                                        cdomain: 'www.cosmocode.de',
+                                        cduration: '1 Tag',
+                                        cdesc: 'CSRF-Schutz der Webseite'
+                                    },
+                                ]
+                            },
+                            en: {
+                                name: 'CMS and privacy settings',
+                                infos: [
+                                    {
+                                        cname: 'cconsent',
+                                        ctype: 'HTTP - persistent cookie',
+                                        cdomain: '.cosmocode.de',
+                                        cduration: '2 years',
+                                        cdesc: 'storage of cookie settings'
+                                    },
+                                    {
+                                        cname: 'csrftoken',
+                                        ctype: 'HTTP - persistent cookie',
+                                        cdomain: 'www.cosmocode.de',
+                                        cduration: '1 day',
+                                        cdesc: 'CSRF protection for the website'
+                                    },
+                                ]
+                            }
+                        }
+                    }
+                },
+                localcookie: {
+                    category: 'various',
+                    type: 'localcookie',
+                    search: 'local-cookie',
+                    language: {
+                        locale: {
+                            de: {
+                                name: 'Lokaler Test Cookie',
+                                infos: [
+                                    {
+                                        cname: 'local-cookie',
+                                        ctype: 'HTTP - persistenter Cookie',
+                                        cduration: '2 Jahre',
+                                        cdesc: 'Hier folgt die Beschreibung, wofür der Cookie eingesetzt wird und warum das notwendig ist'
+                                    },
+                                ]
+                            },
+                            en: {
+                                name: 'Local Test Cookie',
+                                infos: [
+                                    {
+                                        cname: 'local-cookie',
+                                        ctype: 'HTTP - persistent cookie',
+                                        cduration: '2 years',
+                                        cdesc: 'Add an description of the cookie including what it does and why'
+                                    },
+                                ]
+                            }
+                        }
+                    }
+                },
+                wrapped: {
+                    category: 'various',
+                    type: 'wrapped',
+                    search: 'wrapped',
+                    language: {
+                        locale: {
+                            de: {
+                                name: 'Wrapped Test Cookie',
+                                infos: [
+                                    {
+                                        cname: 'wrapped-cookie',
+                                        ctype: 'HTTP - persistenter Cookie',
+                                        cduration: '2 Jahre',
+                                        cdesc: 'Hier folgt die Beschreibung, wofür der Cookie eingesetzt wird und warum das notwendig ist'
+                                    },
+                                ]
+                            },
+                            en: {
+                                name: 'Wrapped Test Cookie',
+                                infos: [
+                                    {
+                                        cname: 'wrapped',
+                                        ctype: 'HTTP - persistent cookie',
+                                        cduration: '2 years',
+                                        cdesc: 'Add an description of the cookie including what it does and why'
+                                    },
+                                ]
+                            }
+                        }
+                    }
+                },
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <!-- button for Opt-Out, can be a link  -->
+    <button class="ccm__cheading__open">Cookie Settings</button>
+
+
+    <!--
+    # # # # # # # # # # # # # # # # # #
+    # Wrapper blocking                #
+    # # # # # # # # # # # # # # # # # #-->
+    <script>
+        CookieConsent.wrapper('wrapped', function () {
+            console.warn('I\'m a script which was wrapped.');
+            document.cookie = 'wrapped-cookie=1';
+        });
+    </script>
+    <!--
+    # # # # # # # # # # # # # # # # # #
+    # Wrapper blocking end            #
+    # # # # # # # # # # # # # # # # # #
+    -->
+
+
+    <!--
+    # # # # # # # # # # # # # # # # # #
+    # Local cookie blocking           #
+    # # # # # # # # # # # # # # # # # #
+    -->
+    <script>
+        document.cookie = 'local-cookie=1';
+    </script>
+    <!--
+    # # # # # # # # # # # # # # # # # #
+    # Local cookie blocking end       #
+    # # # # # # # # # # # # # # # # # #
+    -->
+
+</body>
+</html>

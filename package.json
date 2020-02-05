@@ -1,0 +1,43 @@
+{
+  "name": "cookieconsent",
+  "version": "1.2.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "dev": "parcel --out-dir app src/index-scss.html --no-hmr",
+    "dev:less": "parcel --out-dir app src/index-less.html --no-hmr",
+    "build:nomin:js": "parcel build src/cookieconsent.js --out-dir dist --no-minify",
+    "build:min:js": "parcel build src/cookieconsent.scss --out-dir dist --out-file cookieconsent.min.js --no-source-maps",
+    "build:nomin:less": "parcel build src/cookieconsent.less --out-dir dist --no-minify",
+    "build:min:less": "parcel build src/cookieconsent.less --out-dir dist --out-file cookieconsent.min.css",
+    "build:nomin:scss": "parcel build src/cookieconsent.scss --out-dir dist --no-minify",
+    "build:min:scss": "parcel build src/cookieconsent.scss --out-dir dist --out-file cookieconsent.min.css",
+    "build:dev": "npm run build:nomin:js && npm run build:nomin:scss",
+    "build": "npm run build:min:js && npm run build:min:scss",
+    "build:dev:less": "npm run build:nomin:js && npm run build:nomin:less",
+    "build:less": "npm run build:min:js && npm run build:min:less"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayDeeDee/cookieconsent.git"
+  },
+  "keywords": [],
+  "author": "Brainsum, Jana Deutschlaender",
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/JayDeeDee/cookieconsent/issues"
+  },
+  "homepage": "https://github.com/JayDeeDee/cookieconsent#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "core-js": "^2.6.5",
+    "lodash": "^4.17.11",
+    "parcel-bundler": "^1.11.0",
+    "redom": "^3.18.0",
+    "sass": "^1.25.0"
+  }
+}
