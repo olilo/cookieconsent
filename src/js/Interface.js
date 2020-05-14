@@ -362,7 +362,10 @@ export default class Interface {
             if (!window.CookieConsent.config.categories[key].wanted && window.CookieConsent.config.categories[key].cookies) {
                 try {
                     window.CookieConsent.config.categories[key].cookies.forEach(function (name) {
-                        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+                        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+                        // also delete cookie from subdomain (as set e.g. by google analytics)
+                        var subdomain = '.' + window.location.hostname.replace('www.', '');
+                        document.cookie = name + '=; domain=' + subdomain + '; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
                     });
                 } catch (err) {
                     console.log(err);
